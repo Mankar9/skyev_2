@@ -1,0 +1,19 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <h2 class="elementor-image-box-title">Cargar Evidencia del Caso {{ ticket_id }}</h2>
+    <form action="{% url 'skyev:cargar_evidencia' ticket_id %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <table>
+      {{ form.as_table }}
+      </table>
+      <input type="submit" value="Crear">
+      <input type="submit" onclick="window.location='{% url 'skyev:home' %}' ; return false;" value="Cancelar">
+    </form>
+  </div>
+</div>
+
+{% endblock %}

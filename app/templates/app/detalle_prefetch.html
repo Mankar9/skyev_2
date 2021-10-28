@@ -1,0 +1,40 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+{% load skyev_extras %}
+
+<h3>Evidencia procesada</h3>
+
+<a class="btn btn-primary" href="{% url 'skyev:descargar_prefetch' evidencia.caso.ticket_id evidencia.evidencia_num %}">Exportar Tablas</a>
+<a class="btn btn-primary" href="{% url 'skyev:reprocesar_prefetch' evidencia.caso.ticket_id evidencia.evidencia_num %}">Reprocesar</a>
+
+<table>
+  <tr>
+      <th>last_run_time </th>
+      <th>exe_file </th>
+      <th>pf_hash </th>
+      <th>pf_run_count </th>
+      <th>pf_file </th>
+      <th>pf_version </th>
+      <th>volume_count </th>
+      <th>volume_timestamp </th>
+      <th>volume_dev_path </th>
+      <th>volume_serial_number </th>
+  </tr>
+  {% for prefetch in prefetch_list %}
+  <tr>
+      <td>{{ prefetch.last_run_time  }}</td>
+      <td>{{ prefetch.exe_file  }}</td>
+      <td>{{ prefetch.pf_hash  }}</td>
+      <td>{{ prefetch.pf_run_count  }}</td>
+      <td>{{ prefetch.pf_file  }}</td>
+      <td>{{ prefetch.pf_version  }}</td>
+      <td>{{ prefetch.volume_count  }}</td>
+      <td>{{ prefetch.volume_timestamp  }}</td>
+      <td>{{ prefetch.volume_dev_path  }}</td>
+      <td>{{ prefetch.volume_serial_number  }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

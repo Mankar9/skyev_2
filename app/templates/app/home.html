@@ -1,0 +1,34 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+{% load skyev_extras %}
+
+
+<div class="button-right">
+  <a class="btn btn-primary" onclick="return abrir_modal('{% url 'skyev:crear_caso' %}')">Nuevo caso</a>
+  <a class="btn btn-primary" href="{% url 'skyev:descargar_ejecutable' %}">Descargar ejecutable</a>
+</div>
+<h1>Casos creados</h1>
+  {% if caso_list %}
+  <div class="accordion" id="accordionPanelsStayOpenExample">
+    {% for caso in caso_list %}
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-heading_{{ forloop.counter }}">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse_{{ forloop.counter }}" aria-expanded="false" aria-controls="panelsStayOpen-collapse_{{ forloop.counter }}">
+          [{{ caso.ticket_id }}] - {{ caso.titulo }}
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapse_{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading_{{ forloop.counter }}">
+        <div class="accordion-body">
+          {% include "app/caso_detail.html" with caso=caso evidencia_list=evidencia_list|get_from_dict:caso.id %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+    <p>No ha creado ningún caso.</p>
+  {% endif %}
+
+
+{% endblock %}

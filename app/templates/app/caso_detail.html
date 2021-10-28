@@ -1,0 +1,20 @@
+<div class="right">
+  <a class="btn btn-primary" onclick="return abrir_modal('{% url 'skyev:cargar_evidencia' caso.ticket_id %}')">Cargar Evidencia a este caso</a>
+</div>
+<h3>Descripción:</h3>
+{{ caso.descripcion }}
+<br>
+{% if evidencia_list %}
+<h3>Evidencia Cargada:</h3>
+<ul>
+  {% for ev in evidencia_list %}
+    <li>{{ ev }} <a href="{% url 'skyev:descargar_evidencia' caso.id ev.evidencia_num %}">[Descargar]</a>
+    <a href="{% url 'skyev:detalle_prefetch' caso.ticket_id ev.evidencia_num %}">[Ver prefetch]</a>
+    <a href="{% url 'skyev:detalle_registro' caso.ticket_id ev.evidencia_num %}">[Ver registro]</a>
+    {{ ev.estado }}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+    <p>No se ha cargado ninguna evidencia en este caso.</p>
+{% endif %}

@@ -1,0 +1,52 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+{% load skyev_extras %}
+
+<h1>Evidencia procesada</h1>
+
+<a class="btn btn-primary" href="{% url 'skyev:descargar_registro' evidencia.caso.ticket_id evidencia.evidencia_num %}">Exportar Tablas</a>
+<a class="btn btn-primary" href="{% url 'skyev:reprocesar_registro' evidencia.caso.ticket_id evidencia.evidencia_num %}">Reprocesar</a>
+<a class="btn btn-primary" href="{% url 'skyev:descargar_registro' evidencia.caso.ticket_id evidencia.evidencia_num %}">Descargar</a>
+<br><br><br>
+<h2>Configuración del Sistema: {{ usuario_pc }} </h2>
+
+<table>
+  <tr>
+      <th>Descripción</th>
+      <th>Llave</th>
+      <th>Valor</th>
+  </tr>
+  {% for registro in registro_list %}
+  <tr>
+      <td>{{ registro.key.descripcion  }}</td>
+      <td>{{ registro.key }}</td>
+      <td>{{ registro.valor  }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<br>
+{% for usuario_pc, registro_list in ntuser_dict.items %}
+
+<h2>Configuración del Usuario: {{ usuario_pc }} </h2>
+
+<table>
+  <tr>
+      <th>Descripción</th>
+      <th>Llave</th>
+      <th>Valor</th>
+  </tr>
+  {% for registro in registro_list %}
+  <tr>
+      <td>{{ registro.key.descripcion  }}</td>
+      <td>{{ registro.key }}</td>
+      <td>{{ registro.valor  }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<br>
+{% endfor %}
+
+
+{% endblock %}

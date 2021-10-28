@@ -1,0 +1,20 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <h2 class="elementor-image-box-title">Crear Caso</h2>
+    <form action="{% url 'skyev:crear_caso' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <table>
+      {{ form.as_table }}
+      </table>
+      <input type="submit" value="Crear">
+      <input type="submit" onclick="window.location='{% url 'skyev:home' %}' ; return false;" value="Cancelar">
+    </form>
+  </div>
+
+
+</div>
+
+{% endblock %}

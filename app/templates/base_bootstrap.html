@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Adquisición Evidencia Forense</title>
+
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/materialdesignicons.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+</head>
+<body>
+
+<div id="wrapper">
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+
+
+  <a class="navbar-brand" href="https://getbootstrap.com/docs/4.0/examples/starter-template/#"><i class="fas fa-fingerprint"></i> Skyev</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <!--<li class="nav-item active">
+        <a class="nav-link" href="https://getbootstrap.com/docs/4.0/examples/starter-template/#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://getbootstrap.com/docs/4.0/examples/starter-template/#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="https://getbootstrap.com/docs/4.0/examples/starter-template/#">Disabled</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/starter-template/#">Action</a>
+          <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/starter-template/#">Another action</a>
+          <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/starter-template/#">Something else here</a>
+        </div>
+      </li>-->
+    </ul>
+    <!--<form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>-->
+    <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'logout' %}?next={% url 'skyev:home' %}">Cerrar sesión</a>
+  </div>
+</nav>
+
+<main role="main">
+
+  <div class="starter-template">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <div id="ventana_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+      </div>
+    </div>
+  </div>
+
+</main><!-- /.container -->
+
+
+<script>
+
+
+    function abrir_modal(url)
+
+
+    {
+
+
+        $('#ventana_modal').load(url, function()
+
+
+        {
+
+
+        $(this).modal({
+
+
+            backdrop: 'static',
+
+
+            keyboard: false
+
+
+        })
+
+
+        $(this).modal('show');
+
+
+        });
+
+
+        return false;
+
+
+    }
+
+
+
+
+    function cerrar_modal()
+
+
+    {
+
+
+    $('#ventana_modal').modal('hide');
+
+
+    return false;
+
+
+    }
+
+
+</script>
+
+</div>
+
+<!--
+
+
+
+
+
+			<header id="header">
+              <div class="logo">
+                <a href="index.html">{{ title }}</a>
+              </div>
+            </header>
+		</div>
+    <div id="footer">
+      <p class="copyright">Duván Loaiza - Manuel Cárdenas
+      <br>Universidad de los Andes - 2020</p>
+    </div>
+
+{% block navbar %} {% endblock %}
+{% block welcome %} {% endblock %}
+{% block messages %}
+    {% if messages %}
+    {% for msg in messages %}
+        <div class="alert alert-{{msg.level_tag}}" role="alert">
+        {{msg.message}}
+        </div>
+    {% endfor %}
+    {% endif %}
+{% endblock %}
+</div>
+{% block footer %} {% endblock %}
+-->
+
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+</body>
+</html>
